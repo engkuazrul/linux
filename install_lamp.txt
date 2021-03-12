@@ -1,0 +1,15 @@
+// Install apache
+sudo apt install apache2
+
+// Enable firewall
+sudo ufw enable
+
+// Show list firewall, allow port 80, show status
+sudo ufw app list
+sudo ufw allow in "Apache"
+sudo ufw status
+
+//Show ip address
+ifconfig -a
+ip addr show eth0 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//'
+
