@@ -13,3 +13,9 @@ sudo timeshift --create --comments "A new backup" --tags M
 --tags W stands for Weekly Backup
 --tags M stands for Monthly Backup
 --tags O stands for On-demand Backup
+
+// Enable firewall
+sudo ufw enable
+
+// Allowing SSH connection
+sudo ufw allow 22
