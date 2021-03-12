@@ -1,0 +1,15 @@
+// Update & upgrade system
+sudo apt update
+sudo apt upgrade
+
+// Install backup manager
+sudo apt install timeshift
+
+// Create backup
+sudo timeshift --create --comments "A new backup" --tags M
+
+// Tags
+--tags D stands for Daily Backup
+--tags W stands for Weekly Backup
+--tags M stands for Monthly Backup
+--tags O stands for On-demand Backup
