@@ -1,0 +1,41 @@
+// Move project folder or clone from any git repository
+cd /var/www/html/
+sudo mv example /var/www/html/ 
+git clone repo url example
+
+// Set the permission to project folder
+sudo chgrp -R www-data /var/www/html/example/
+sudo chmod -R 775 /var/www/html/example/storage
+
+// Edit conf file
+cd /etc/apache2/sites-available
+sudo nano 000-default.conf
+
+// Edit configuration like this
+DocumentRoot /var/www/html
+Alias /project1 /var/www/html/project1/public
+Alias /project2 /var/www/html/project2/public
+
+<Directory /var/www/html/project1>
+  //For laravel 
+   AllowOverride All
+   Allow from All
+</Directory><Directory /var/www/html/project2>
+  //For php only
+   DirectoryIndex index.php 
+</Directory>
+
+// For laravel, add this to .htaccess
+RewriteBase /project1/
+
+// Disable previous conf
+sudo a2dissite previous.conf
+
+// Enable new conf
+sudo a2ensite new.conf
+
+// Enable rewrite module in apache
+sudo a2enmod rewrite
+
+// Restart apache server
+sudo systemctl restart apache2
