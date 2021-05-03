@@ -1,0 +1,30 @@
+// Install OpenJDK
+sudo apt install default-jre
+java --version
+
+// Install Tomcat
+sudo apt install tomcat9 tomcat9-admin
+
+// Edit tomcat-users.xml
+sudo nano /etc/tomcat9/tomcat-users.xml
+
+add ->
+<role rolename="admin-gui"/>
+<role rolename="manager-gui"/>
+<user username="tomcat" password="pass" roles="admin-gui,manager-gui"/>
+->
+
+sudo systemctl enable tomcat9
+
+// Service
+sudo service tomcat9 start
+sudo service tomcat9 status
+sudo service tomcat9 stop
+
+// Install geoserver
+wget https://sourceforge.net/projects/geoserver/files/GeoServer/2.18.0/geoserver-2.18.0-war.zip
+sudo service tomcat9 stop
+sudo mv geoserver-2.18.0-war.zip /var/lib/tomcat9/webapps
+cd /var/lib/tomcat9/webapps
+sudo unzip geoserver-2.18.0-war.zip
+sudo rm geoserver-2.18.0-war.zip
