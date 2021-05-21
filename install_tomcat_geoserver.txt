@@ -42,6 +42,10 @@ sudo nano server.xml
 <Connector connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443" address="0.0.0.0" />
 -->
 
+// Optional
+JAVA_OPTS="-Djava.net.preferIPv4Stack=true"
+export JAVA_OPTS
+
 // Restart server
 sudo systemctl daemon-reload
 sudo systemctl enable tomcat9
