@@ -20,7 +20,9 @@ Alias /project2 /var/www/html/project2/public
   //For laravel 
    AllowOverride All
    Allow from All
-</Directory><Directory /var/www/html/project2>
+</Directory>
+
+<Directory /var/www/html/project2>
   //For php only
    DirectoryIndex index.php 
 </Directory>
