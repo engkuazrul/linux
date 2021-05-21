@@ -8,7 +8,7 @@ sudo apt install tomcat9 tomcat9-admin
 // Edit tomcat-users.xml
 sudo nano /etc/tomcat9/tomcat-users.xml
 
-add ->
+add inside user->
 <role rolename="admin-gui"/>
 <role rolename="manager-gui"/>
 <user username="tomcat" password="pass" roles="admin-gui,manager-gui"/>
@@ -21,10 +21,28 @@ sudo service tomcat9 start
 sudo service tomcat9 status
 sudo service tomcat9 stop
 
+// Firewall
+sudo ufw allow 8080
+$ sudo ufw allow from any to any port 8080 proto tcp
+
 // Install geoserver
+sudo service tomcat9 stop
 wget https://sourceforge.net/projects/geoserver/files/GeoServer/2.18.0/geoserver-2.18.0-war.zip
 sudo service tomcat9 stop
 sudo mv geoserver-2.18.0-war.zip /var/lib/tomcat9/webapps
 cd /var/lib/tomcat9/webapps
 sudo unzip geoserver-2.18.0-war.zip
 sudo rm geoserver-2.18.0-war.zip
+
+// Setting digitial ocean server
+sudo systemctl disable tomcat9
+cd /var/lib/tomcat9/conf
+sudo nano server.xml
+--> update
+<Connector connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443" address="0.0.0.0" />
+-->
+
+// Restart server
+sudo systemctl daemon-reload
+sudo systemctl enable tomcat9
+sudo service tomcat9 start
