@@ -29,4 +29,13 @@ Setup email & password
 
 Open in http://SERVER_IP/pgadmin4
 
+// Restore db
 pg_restore -h localhost -p 5432 -U postgres -d iplan iplan.backup
+
+// Download from gd
+ wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&fileid(need replace)' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&fileid(need replace)" -O filename(need replace) && rm -rf /tmp/cookies.txt
+ 
+ example
+  wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1l9ygZXkynvh9g9goQkdN5ipYpr3rQOQq' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1l9ygZXkynvh9g9goQkdN5ipYpr3rQOQq" -O iplan.backup && rm -rf /tmp/cookies.txt
+
+
