@@ -39,5 +39,9 @@ sudo a2ensite new.conf
 // Enable rewrite module in apache
 sudo a2enmod rewrite
 
+// On project folder
+composer install
+npm install
+
 // Restart apache server
 sudo systemctl restart apache2
