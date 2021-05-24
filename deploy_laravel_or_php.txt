@@ -27,7 +27,7 @@ Alias /project2 /var/www/html/project2/public
    DirectoryIndex index.php 
 </Directory>
 
-// For laravel, add this to .htaccess
+// For laravel, add this to .htaccess locate in public folder
 RewriteBase /project1/
 
 // Disable previous conf
