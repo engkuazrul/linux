@@ -46,7 +46,7 @@ npm install
 // Restart apache server
 sudo systemctl restart apache2
 
-// Optional if not working
+// Optional if not working (laravel 5 & 6)
 cd to project folder
 
 # Group Writable (Group, User Writable)
