@@ -45,3 +45,22 @@ npm install
 
 // Restart apache server
 sudo systemctl restart apache2
+
+// Optional if not working
+cd to project folder
+
+# Group Writable (Group, User Writable)
+$ sudo chmod -R gu+w storage
+
+# World-writable (Group, User, Other Writable)
+$ sudo chmod -R guo+w storage
+
+#####
+# The bootstrap/cache directory may need writing to also
+##
+
+# Group Writable (Group, User Writable)
+$ sudo chmod -R gu+w bootstrap/cache
+
+# World-writable (Group, User, Other Writable)
+$ sudo chmod -R guo+w bootstrap/cache
