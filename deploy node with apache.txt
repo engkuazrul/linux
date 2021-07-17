@@ -27,17 +27,20 @@ sudo a2enmod proxy_http
 // Edit conf
 sudo nano /etc/apache2/sites-available/example.com.conf
 
-ProxyRequests Off
-        ProxyPreserveHost On
-        ProxyVia Full
-        <Proxy *>
-           Require all granted
-        </Proxy>
 
-        <Location /node> //changeyourdesiredurl //http:localhost/node/get
-           ProxyPass http://127.0.1:3000/
-           ProxyPassReverse http://127.0.1:3000/
-        </Location>
+ProxyRequests Off
+ProxyPreserveHost On
+ProxyVia Full
+<Proxy *>
+   Allow from All
+   Require all granted
+</Proxy>
+
+<Location /node>
+   ProxyPass http://127.0.1:3000
+   ProxyPassReverse http://127.0.1:3000
+</Location>
+
 
 // Restart apache
  systemctl restart apache2
