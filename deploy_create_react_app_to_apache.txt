@@ -1,0 +1,36 @@
+cd /etc/apache2/sites-available/
+
+Alias /tf_react /var/www/html/tf-react-ui
+<Directory /var/www/html/tf-react-ui>
+   Options Indexes FollowSymLinks
+   AllowOverride All
+   Require all granted
+</Directory>
+
+
+npm install
+
+//add to package json
+"homepage": "http://server.inetspatial.com/tf_react/"
+
+// Build react app
+npm run build
+
+// Copy build file to new folder
+sudo cp -rf build /var/www/html/tf-react-ui
+sudo chmod -R 775 tf-react-ui
+
+cd tf-react-ui
+
+// Add to htaccess
+sudo nano .htaccess
+
+Options -MultiViews
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.html [QSA,L]
+
+// Restart server
+sudo systemctl restart apache2
+
+
