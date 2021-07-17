@@ -1,0 +1,47 @@
+sudo apt-get install nodejs
+sudo apt-get install build-essential
+npm install
+sudo npm install -g pm2
+
+// make executable
+sudo chmod 755 server.js
+
+// dont forget to allow port
+for example
+sudo ufw allow 3000
+
+// start server
+node server.js (for testing)
+sudo pm2 start server.js (startserver)
+
+// test url
+curl http:localhost:3000
+
+//automatically restart if the server is rebooted
+sudo pm2 startup systemd
+
+// configure apache for first time
+sudo a2enmod proxy
+sudo a2enmod proxy_http
+
+// Edit conf
+sudo nano /etc/apache2/sites-available/example.com.conf
+
+ProxyRequests Off
+        ProxyPreserveHost On
+        ProxyVia Full
+        <Proxy *>
+           Require all granted
+        </Proxy>
+
+        <Location /node> //changeyourdesiredurl //http:localhost/node/get
+           ProxyPass http://127.0.1:3000/
+           ProxyPassReverse http://127.0.1:3000/
+        </Location>
+
+// Restart apache
+ systemctl restart apache2
+
+
+
+
