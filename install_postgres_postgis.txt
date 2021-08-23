@@ -29,6 +29,13 @@ Setup email & password
 
 Open in http://SERVER_IP/pgadmin4
 
+// Setup postgres password
+sudo su - postgres
+psql postgres postgres
+ALTER USER postgres PASSWORD 'newsecret';
+\q
+exit
+
 // Restore db
 pg_restore -h localhost -p 5432 -U postgres -d iplan iplan.backup
 
