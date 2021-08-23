@@ -1,0 +1,3 @@
+# install php and dependencies
+sudo apt-get install php libapache2-mod-php php-common php-gd php-mysql php-curl php-intl php-xsl php-mbstring php-zip php-bcmath php-soap php-xdebug php-imagick
+
